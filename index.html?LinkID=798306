@@ -1,0 +1,770 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html class="hasSidebar hasPageActions hasBreadcrumb conceptual has-default-focus theme-light" lang="en-us" dir="ltr" data-css-variable-support="true" data-authenticated="false" data-auth-status-determined="false" data-target="docs" x-ms-format-detection="none">
+
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta property="og:title" content="Prerequisites for .NET Core on Windows" />
+	<meta property="og:type" content="website" />
+	<meta property="og:url" content="https://docs.microsoft.com/en-us/dotnet/core/windows-prerequisites" />
+		<meta property="og:description" content="Learn what dependencies you need on your Windows machine to develop and run .NET Core applications." />
+		<meta property="og:image" content="https://docs.microsoft.com/en-us/media/logos/logo-ms-social.png" />
+		<meta property="og:image:alt" content="Microsoft Logo" />
+
+	<meta name="twitter:card" content="summary" />
+	<meta name="twitter:site" content="@docsmsft" />
+
+		<meta name="ms.devlang" content="dotnet" />
+<meta name="author" content="mairaw" />
+<meta name="ms.author" content="mairaw" />
+<meta name="breadcrumb_path" content="/dotnet/breadcrumb/toc.json" />
+<meta name="apiPlatform" content="dotnet" />
+<meta name="ms.topic" content="conceptual" />
+<meta name="ms.prod" content="dotnet-core" />
+<meta name="uhfHeaderId" content="MSDocsHeader-DotNet" />
+<meta name="ms.custom" content="updateeachvsrelease" />
+<meta name="description" content="Learn what dependencies you need on your Windows machine to develop and run .NET Core applications." />
+<meta name="ms.date" content="04/08/2019" />
+<meta name="search.ms_sitename" content="Docs" />
+<meta name="search.ms_docsetname" content="core-docs" />
+<meta name="locale" content="en-us" />
+<meta name="site_name" content="Docs" />
+<meta name="search.ms_product" content="VS" />
+<meta name="depot_name" content="VS.core-docs" />
+<meta name="updated_at" content="2019-09-13 01:58 PM" />
+<meta name="gitcommit" content="https://github.com/dotnet/docs/blob/cd24689101c7f317fcf7ac69f7909b4b27158f0c/docs/core/windows-prerequisites.md" />
+<meta name="original_content_git_url" content="https://github.com/dotnet/docs/blob/live/docs/core/windows-prerequisites.md" />
+<meta name="document_id" content="ff5c1c2a-7d86-703c-038e-062f5dcfc5b0" />
+<meta name="document_version_independent_id" content="cab4f67f-f338-8990-6454-853a0f01627e" />
+<meta name="page_type" content="conceptual" />
+<meta name="toc_rel" content="../toc.json" />
+<meta name="pdf_url_template" content="https://docs.microsoft.com/pdfstore/en-us/VS.core-docs/{branchName}{pdfName}" />
+<meta name="search.mshattr.devlang" content="csharp" />
+<meta name="word_count" content="792" />
+
+	<meta name="scope" content=".NET" />
+<link href="https://docs.microsoft.com/en-us/dotnet/core/windows-prerequisites" rel="canonical">
+	<title>Prerequisites for .NET Core on Windows | Microsoft Docs</title>
+
+		<link rel="stylesheet" href="/_themes/docs.theme/master/en-us/_themes/styles/28c242d6.site-ltr.css ">
+
+	<link rel="stylesheet" href="/_themes/docs.theme/master/en-us/_themes/styles/b8d322.conceptual.css ">
+
+
+	<script>
+	var msDocs = {
+		data: {
+			timeOrigin: Date.now(),
+			azureHeaderLocale: 'en-us',
+			contentLocale: 'en-us',
+			contentDir: 'ltr',
+			userLocale: 'en-us',
+			userDir: 'ltr',
+			pageTemplate: 'Conceptual',
+			brand: '',
+			context: {
+
+			},
+			hasComments: true,
+			feedbackSystem: 'GitHub',
+			feedbackGitHubRepo: 'dotnet/docs',
+			feedbackProductUrl: 'https://developercommunity.visualstudio.com/spaces/61/index.html',
+			contentGitUrl: 'https://github.com/dotnet/docs/blob/master/docs/core/windows-prerequisites.md',
+			showLatex: true,
+			extendBreadcrumb: false,
+			auth: 'v2',
+		},
+		functions:{}
+	};
+	if (!('Promise' in window && 'resolve' in window.Promise && 'reject' in window.Promise && 'all' in window.Promise && 'race' in window.Promise)) {
+		document.write('<script src="https://static.docs.com/ui/third-party/bluebird/3.5.0/bluebird.min.js" integrity="sha384-aD4BDeDGeLXLpPK4yKeqtZQa9dv4a/7mQ+4L5vwshIYH1Mc2BrXvHd32iHzYCQy5" crossorigin="anonymous"><\/script>');
+	}
+	if (typeof fetch !== 'function') {
+		document.write('<script src="https://static.docs.com/ui/third-party/fetch/2.0.3/fetch.min.js" integrity="sha384-H3LQq82b6Mm80GYRHtRSlTwO9DoXctmYCVEYk9M8mp97lRzs6DuSrHVUg3SBP9w0" crossorigin="anonymous"><\/script>');
+	}
+	if (typeof HTMLTemplateElement === 'undefined') {
+		document.write('<script src="https://static.docs.com/ui/third-party/template/1.4.0/template.min.js" integrity="sha384-1zKzI6ldTVHMU7n0W2HpE/lhHI+UG4D9IIaxbj3kT2UhCWicdTuJkTtnKuu0CQzN" crossorigin="anonymous"><\/script>');
+	}
+	if (typeof URL !== 'function') {
+		document.write('<script src="https://static.docs.com/ui/third-party/url/0.5.7/url.min.js" integrity="sha384-vn7xBMtpSTfzaTRWxj0kVq0UcsbBrTOgZ/M1ISHqe1V358elYva+lfiEC+T8jLPc" crossorigin="anonymous"><\/script>');
+	}
+	</script>
+
+	<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js" integrity="sha384-tsQFqpEReu7ZLhBV2VZlAu7zcOV+rXbYlF2cqB8txI/8aZajjp4Bqd+V6D5IgvKT" crossorigin="anonymous"></script>
+		<script src="/_themes/docs.theme/master/en-us/_themes/scripts/e0689d20.index-docs.js"></script>
+
+</head>
+
+<body lang="en-us" dir="ltr">
+<div class="header-holder has-default-focus">
+	<a href="#main" class="skip-to-main-link visually-hidden-until-focused is-fixed has-inner-focus focus-visible has-top-zero has-left-zero has-right-zero has-padding-medium has-text-centered has-body-background-medium" tabindex="1">Skip to main content</a>
+		<div id="headerAreaHolder" data-bi-name="header">
+<header class="nav-bar" role="banner" itemscope="itemscope" itemtype="http://schema.org/Organization">
+	<button class="nav-bar-burger" aria-label="Global navigation" aria-controls="nav-bar-mobile-nav" aria-expanded="false">
+		<span></span>
+		<span></span>
+		<span></span>
+	</button>
+	<nav class="nav-bar-mobile-nav" role="navigation" id="nav-bar-mobile-nav" aria-label="Global" hidden="">
+	</nav>
+	<a class="nav-bar-button" itemprop="url" href="https://www.microsoft.com" aria-label="Microsoft">
+		<div class="nav-bar-logo has-background-image theme-display is-light" role="presentation" aria-hidden="true" itemprop="logo" itemscope="itemscope"></div>
+		<div class="nav-bar-logo has-background-image theme-display is-dark is-high-contrast" role="presentation" aria-hidden="true" itemprop="logo" itemscope="itemscope"></div>
+	</a>
+	<nav class="nav-bar-nav" role="navigation" aria-label="Global">
+	</nav>
+	<span class="nav-bar-spacer"></span>
+	<div class="nav-bar-item is-invisible"> <!-- For Forums mobile layout rendering -->
+		<button id="form-expander" class="nav-bar-button has-hover-underline has-margin-left-extra-small"></button>
+	</div>
+</header>		</div>
+		<div class="content-header uhf-container has-padding has-default-focus" data-bi-name="content-header">
+		<nav class="has-padding-none-mobile" data-bi-name="breadcrumb" itemscope itemtype="http://schema.org/BreadcrumbList" role="navigation" aria-label="Breadcrumb">
+			<ul id="page-breadcrumbs" class="breadcrumbs">
+			</ul>
+		</nav>
+		<div class="content-header-controls">
+			<button type="button" class="contents-button button" data-bi-name="contents-expand" aria-haspopup="true">
+				<span class="icon"><span class="docon docon-menu" aria-hidden="true"></span></span>
+				<span>Contents</span>
+			</button>
+		</div>
+		<div class="content-header-controls exit-focus">
+			<button type="button" class="ap-collapse-behavior ap-expanded button" data-bi-name="ap-collapse" aria-controls="action-panel">
+				<span class="icon"><span class="docon docon-exit-mode" aria-hidden="true"></span></span>
+				<span>Exit focus mode</span>
+			</button>
+		</div>
+		<div id="page-actions" class="is-flex-touch has-flex-justify-content-space-between-touch has-padding-none has-padding-none-mobile">
+			<ul class="action-list has-flex-justify-content-start-mobile is-flex is-flex-row has-flex-wrap">
+						<li>
+							<a href="#feedback" class="button is-text has-inner-focus is-small is-icon-only-touch" data-bi-name="comments">
+								<span class="icon">
+									<span class="docon docon-comment-lines" aria-hidden="true"></span>
+								</span>
+								<span class="is-visually-hidden-touch is-hidden-portrait">Feedback</span>
+							</a>
+						</li>
+							<li id="contenteditbtn">
+									<a href="https://github.com/dotnet/docs/blob/master/docs/core/windows-prerequisites.md" class="button is-text has-inner-focus is-icon-only-touch is-small" title="Edit This Document" data-bi-name="edit" data-original_content_git_url="https://github.com/dotnet/docs/blob/live/docs/core/windows-prerequisites.md" data-original_content_git_url_template="" data-pr_repo="" data-pr_branch="">
+									<span class="icon">
+										<span class="docon docon-edit-outline" aria-hidden="true"></span>
+									</span>
+									<span class="is-visually-hidden-touch is-hidden-portrait">Edit</span>
+								</a>
+							</li>
+				<li>
+<div class="sharing dropdown has-caret">
+	<button class="dropdown-trigger button is-text is-fullwidth has-flex-justify-content-start has-inner-focus is-small is-icon-only-touch" aria-controls="sharing-menu" aria-expanded="false" title="Share This Document" data-bi-name="share">
+		<span class="icon" aria-hidden="true">
+			<span class="docon docon-sharing"></span>
+		</span>
+		<span class="is-visually-hidden-touch is-hidden-portrait">Share</span>
+	</button>
+	<div class="dropdown-menu has-padding-small" id="sharing-menu">
+		<ul data-bi-name="share-links">
+			<li>
+				<a class="button is-text is-fullwidth has-flex-justify-content-start has-inner-focus is-small share-twitter" data-bi-name="twitter">
+					<span class="icon">
+						<span class="docon docon-brand-twitter has-text-primary" aria-hidden="true"></span>
+					</span>
+					<span>Twitter</span>
+				</a>
+			</li>
+			<li>
+				<a class="button is-text is-fullwidth has-flex-justify-content-start has-inner-focus is-small share-linkedin" data-bi-name="linkedin">
+					<span class="icon">
+						<span class="docon docon-brand-linkedin has-text-primary" aria-hidden="true"></span>
+					</span>
+					<span>LinkedIn</span>
+				</a>
+			</li>
+			<li>
+				<a class="button is-text is-fullwidth has-flex-justify-content-start has-inner-focus is-small share-facebook" data-bi-name="facebook">
+					<span class="icon">
+						<span class="docon docon-brand-facebook has-text-primary" aria-hidden="true"></span>
+					</span>
+					<span>Facebook</span>
+				</a>
+			</li>
+			<li>
+				<a class="button is-text is-fullwidth has-flex-justify-content-start has-inner-focus is-small share-email" data-bi-name="email">
+					<span class="icon">
+						<span class="docon docon-mail-message-fill has-text-primary" aria-hidden="true"></span>
+					</span>
+					<span>Email</span>
+				</a>
+			</li>
+		</ul>
+	</div>
+</div>				</li>
+				<li>
+<div class="dropdown has-caret">
+	<button class="dropdown-trigger button is-text is-small is-icon-only-touch has-inner-focus"
+		aria-controls="theme-menu" aria-expanded="false" title="Theme" data-bi-name="theme">
+		<span class="icon">
+			<span class="docon docon-sun" aria-hidden="true"></span>
+		</span>
+		<span class="is-visually-hidden-touch is-hidden-portrait">Theme</span>
+	</button>
+	<div class="dropdown-menu" id="theme-menu" role="menu">
+		<div class="theme-selector has-padding-small">
+			<div class="theme is-block">
+				<button class="button is-text is-small theme-control is-fullwidth has-flex-justify-content-start"
+					data-theme-to="light" role="menuitem">
+					<span class="theme-light has-margin-right-small">
+						<span
+							class="theme-selector-icon css-variable-support has-border is-inline-block has-body-background"
+							aria-hidden="true">
+							<svg class="svg" xmlns="http://www.w3.org/2000/svg"
+								viewBox="0 0 22 14">
+								<rect width="22" height="14" class="has-fill-body-background" />
+								<rect x="5" y="5" width="12" height="4" class="has-fill-secondary" />
+								<rect x="5" y="2" width="2" height="1" class="has-fill-secondary" />
+								<rect x="8" y="2" width="2" height="1" class="has-fill-secondary" />
+								<rect x="11" y="2" width="3" height="1" class="has-fill-secondary" />
+								<rect x="1" y="1" width="2" height="2" class="has-fill-secondary" />
+								<rect x="5" y="10" width="7" height="2" rx="0.3" class="has-fill-primary" />
+								<rect x="19" y="1" width="2" height="2" rx="1" class="has-fill-secondary" />
+							</svg>
+						</span>
+					</span>
+					<span>
+Light					</span>
+				</button>
+			</div>
+			<div class="theme is-block">
+				<button class="button is-text is-small theme-control is-fullwidth has-flex-justify-content-start"
+					data-theme-to="dark" role="menuitem">
+					<span class="theme-dark has-margin-right-small">
+						<span
+							class="has-border theme-selector-icon css-variable-support is-inline-block has-body-background"
+							aria-hidden="true">
+							<svg class="svg" xmlns="http://www.w3.org/2000/svg"
+								viewBox="0 0 22 14">
+								<rect width="22" height="14" class="has-fill-body-background" />
+								<rect x="5" y="5" width="12" height="4" class="has-fill-secondary" />
+								<rect x="5" y="2" width="2" height="1" class="has-fill-secondary" />
+								<rect x="8" y="2" width="2" height="1" class="has-fill-secondary" />
+								<rect x="11" y="2" width="3" height="1" class="has-fill-secondary" />
+								<rect x="1" y="1" width="2" height="2" class="has-fill-secondary" />
+								<rect x="5" y="10" width="7" height="2" rx="0.3" class="has-fill-primary" />
+								<rect x="19" y="1" width="2" height="2" rx="1" class="has-fill-secondary" />
+							</svg>
+						</span>
+					</span>
+					<span>
+Dark					</span>
+				</button>
+			</div>
+			<div class="theme is-block">
+				<button class="button is-text is-small theme-control is-fullwidth has-flex-justify-content-start"
+					data-theme-to="high-contrast" role="menuitem">
+					<span class="theme-high-contrast has-margin-right-small">
+						<span
+							class="has-border theme-selector-icon css-variable-support is-inline-block has-body-background"
+							aria-hidden="true">
+							<svg class="svg" xmlns="http://www.w3.org/2000/svg"
+								viewBox="0 0 22 14">
+								<rect width="22" height="14" class="has-fill-body-background" />
+								<rect x="5" y="5" width="12" height="4" class="has-fill-secondary" />
+								<rect x="5" y="2" width="2" height="1" class="has-fill-secondary" />
+								<rect x="8" y="2" width="2" height="1" class="has-fill-secondary" />
+								<rect x="11" y="2" width="3" height="1" class="has-fill-secondary" />
+								<rect x="1" y="1" width="2" height="2" class="has-fill-secondary" />
+								<rect x="5" y="10" width="7" height="2" rx="0.3" class="has-fill-primary" />
+								<rect x="19" y="1" width="2" height="2" rx="1" class="has-fill-secondary" />
+							</svg>
+						</span>
+					</span>
+					<span>
+High contrast					</span>
+				</button>
+			</div>
+		</div>
+	</div>
+</div>				</li>
+				<li>
+					<a class="docs-sign-in auth-status-determined not-authenticated button is-text has-inner-focus has-text-primary is-small" href="#">Sign in</a>
+					<div class="dropdown has-caret auth-status-determined authenticated">
+						<button class="dropdown-trigger button is-text has-inner-focus is-small is-icon-only-touch has-inner-focus" aria-label="Your Account" aria-controls="user-menu" aria-expanded="false">
+							<span class="icon" aria-hidden="true">
+								<span class="image">
+									<img class="has-body-background-medium is-rounded" data-profile-property="avatarUrl">
+								</span>
+							</span>
+							<span class="is-truncated has-margin-left-small" data-profile-property="userName"></span>
+						</button>
+						<div class="dropdown-menu box" id="user-menu" role="menu">
+							<div class="media is-user-dir">
+								<div class="media-left">
+									<span class="image is-64x64" aria-hidden="true">
+										<img class="has-body-background-medium is-rounded" data-profile-property="avatarUrl">
+									</span>
+								</div>
+								<div class="media-content">
+									<p class="title">
+										<span class="is-truncated" style="max-width: 200px" data-profile-property="userName"></span>
+									</p>
+									<p class="subtitle has-margin-bottom-none">
+										<span class="is-truncated" style="max-width: 200px" data-profile-property="upn"></span>
+									</p>
+									<ul class="is-unstyled has-margin-none has-margin-top-small">
+										<li><a href="/profile" data-profile-property="profileUrl">Profile</a></li>
+										<li><a class="docs-sign-out" href="#">Sign out</a></li>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
+				</li>
+			</ul>
+			<button type="button" class="contents-button button is-small is-text is-hidden-tablet has-inner-focus is-hidden-tablet" aria-label="Contents" data-bi-name="contents-expand-">
+				<span class="icon">
+					<span class="docon docon-editor-list-bullet" aria-hidden="true"></span>
+				</span>
+				<span>Contents</span>
+			</button>
+		</div>
+	</div>
+
+		<div id="banner-holder" class="has-default-focus has-overflow-hidden">
+		</div>
+
+	<div id="disclaimer-holder" class="has-overflow-hidden has-default-focus"></div>
+	</div>
+
+	<div class="mainContainer  uhf-container has-top-padding  has-default-focus" data-bi-name="body">
+
+		<div class="columns has-large-gaps is-gapless-mobile ">
+
+			<div id="left-container" class="left-container is-hidden-mobile column is-one-third-tablet is-one-quarter-desktop">
+				<nav id="affixed-left-container" class="is-fixed is-flex is-flex-column" role="navigation" aria-label="Primary"></nav>
+			</div>
+
+			<section class="primary-holder column is-two-thirds-tablet is-three-quarters-desktop">
+				<div class="columns is-gapless-mobile has-large-gaps ">
+
+
+				<div id="main-column" class="column  is-full is-four-fifths-desktop ">
+
+					<main id="main" role="main" class="content " data-bi-name="content" lang="en-us" dir="ltr">
+
+
+
+						<h1 id="prerequisites-for-net-core-on-windows" sourcefile="docs/core/windows-prerequisites.md" sourcestartlinenumber="8">Prerequisites for .NET Core on Windows</h1>
+
+						<ul class="metadata page-metadata" data-bi-name="page info" lang="en-us" dir="ltr">
+							<li class="displayDate loading">
+								<time role="presentation" datetime="2019-04-08T00:00:00.000Z" data-article-date-source="ms.date">04/08/2019</time>
+							</li>
+								<li class="readingTime">3 minutes to read</li>
+							<li class="contributors-holder">
+								<a class="has-inner-focus" href="https://github.com/dotnet/docs/blob/master/docs/core/windows-prerequisites.md" title="17 Contributors" aria-label="17 Contributors">
+									<ul class="contributors" data-bi-name="contributors" aria-hidden="true">
+												<li><img src="https://docs.microsoft.com/_themes/docs.theme/master/en-us/_themes/images/contributor.svg" data-src="https://github.com/mairaw.png?size=32" role="presentation"/></li>
+												<li><img src="https://docs.microsoft.com/_themes/docs.theme/master/en-us/_themes/images/contributor.svg" data-src="https://github.com/nschonni.png?size=32" role="presentation"/></li>
+												<li><img src="https://docs.microsoft.com/_themes/docs.theme/master/en-us/_themes/images/contributor.svg" data-src="https://github.com/Thraka.png?size=32" role="presentation"/></li>
+												<li><img src="https://docs.microsoft.com/_themes/docs.theme/master/en-us/_themes/images/contributor.svg" data-src="https://github.com/Youssef1313.png?size=32" role="presentation"/></li>
+												<li><img src="https://docs.microsoft.com/_themes/docs.theme/master/en-us/_themes/images/contributor.svg" data-src="https://github.com/rpetrusha.png?size=32" role="presentation"/></li>
+										<li><span class="is-size-8 has-text-subtle">+12</span></li>
+									</ul>
+								</a>
+							</li>
+
+						</ul>
+
+						<nav id="center-doc-outline" class="doc-outline is-hidden-desktop" data-bi-name="intopic toc" role="navigation" aria-label="Article Outline">
+							<h3>In this article</h3>
+						</nav>
+
+
+						<!-- <content> -->
+							
+<p>This article shows the supported OS versions in order to run .NET Core applications on Windows. The supported OS versions and dependencies that follow apply to the three ways of developing .NET Core apps on Windows:</p>
+<ul>
+<li><a href="tutorials/using-with-xplat-cli" data-linktype="relative-path">Command line</a></li>
+<li><a href="https://www.visualstudio.com/downloads/?utm_medium=microsoft&amp;utm_source=docs.microsoft.com&amp;utm_campaign=button+cta&amp;utm_content=download+vs2017" data-linktype="external">Visual Studio</a></li>
+<li><a href="https://code.visualstudio.com/" data-linktype="external">Visual Studio Code</a></li>
+</ul>
+<p>Also, if you're developing on Windows using Visual Studio 2017, the <a href="#prerequisites-with-visual-studio-2017" data-linktype="self-bookmark">Prerequisites with Visual Studio 2017</a> section goes in more detail about minimum versions supported for .NET Core development.</p>
+<h2 id="net-core-supported-operating-systems">.NET Core supported operating systems</h2>
+<p>The following articles have a complete list of .NET Core supported operating systems per version:</p>
+<ul>
+<li><a href="https://github.com/dotnet/core/blob/master/release-notes/3.0/3.0-supported-os.md" data-linktype="external">.NET Core 3.0 (Preview)</a></li>
+<li><a href="https://github.com/dotnet/core/blob/master/release-notes/2.2/2.2-supported-os.md" data-linktype="external">.NET Core 2.2</a></li>
+<li><a href="https://github.com/dotnet/core/blob/master/release-notes/2.1/2.1-supported-os.md" data-linktype="external">.NET Core 2.1</a></li>
+<li><a href="https://github.com/dotnet/core/blob/master/release-notes/1.0/1.0-supported-os.md" data-linktype="external">.NET Core 1.0</a></li>
+</ul>
+<p>For download links and more information, see <a href="https://dotnet.microsoft.com/download" data-linktype="external">.NET downloads</a> to download the latest version or <a href="https://dotnet.microsoft.com/download/archives#dotnet-core" data-linktype="external">.NET downloads archive</a> for older versions.</p>
+<h2 id="net-core-dependencies">.NET Core dependencies</h2>
+<p>.NET Core 1.1 and earlier versions require the Visual C++ Redistributable when running on Windows versions earlier than Windows 10 and Windows Server 2016. This dependency is automatically installed by the .NET Core installer.</p>
+<p><a href="https://www.microsoft.com/download/details.aspx?id=52685" data-linktype="external">Microsoft Visual C++ 2015 Redistributable Update 3</a> must be manually installed when:</p>
+<ul>
+<li>Installing .NET Core with the <a href="tools/dotnet-install-script" data-linktype="relative-path">installer script</a>.</li>
+<li>Deploying a self-contained .NET Core application.</li>
+<li>Building the product from source.</li>
+<li>Installing .NET Core via a <em>.zip</em> file. This can include build/CI/CD servers.</li>
+</ul>
+<div class="NOTE">
+<p>Note</p>
+<p><strong>For Windows 8.1 and earlier versions, or Windows Server 2012 R2 and earlier versions:</strong></p>
+<p>Make sure that your Windows installation is up-to-date and includes <a href="https://support.microsoft.com/help/2999226/update-for-universal-c-runtime-in-windows" data-linktype="external">KB2999226</a>, which can be installed through Windows Update. If you don't have this update installed, you'll see an error like the following when you launch a .NET Core application: <code>The program can't start because api-ms-win-crt-runtime-l1-1-0.dll is missing from your computer. Try reinstalling the program to fix this problem.</code></p>
+<p><strong>For Windows 7 or Windows Server 2008 R2:</strong></p>
+<p>In addition to KB2999226, make sure you also have <a href="https://support.microsoft.com/help/2533623/microsoft-security-advisory-insecure-library-loading-could-allow-remot" data-linktype="external">KB2533623</a> installed. If you don't have this update installed, you'll see an error similar to the following when you launch a .NET Core application: <code>The library hostfxr.dll was found, but loading it from C:\&lt;path_to_app&gt;\hostfxr.dll failed</code>.</p>
+</div>
+<h2 id="prerequisites-for-net-core-30-preview-3">Prerequisites for .NET Core 3.0 Preview 3</h2>
+<p>.NET Core 3.0 Preview 3 has the same prerequisites as other versions of .NET Core. However, if you want to use Visual Studio to create .NET Core 3.0 projects, you must use the <a href="https://visualstudio.microsoft.com/downloads/?utm_medium=microsoft&amp;utm_source=docs.microsoft.com&amp;utm_campaign=inline+link&amp;utm_content=download+vs2019" data-linktype="external">Visual Studio 2019</a>. Visual Studio 2019 can be installed side-by-side with other versions of Visual Studio without conflict.</p>
+<h2 id="prerequisites-with-visual-studio-2017">Prerequisites with Visual Studio 2017</h2>
+<p>You can use any editor to develop .NET Core applications using the .NET Core SDK. Visual Studio 2017 provides an integrated development environment for .NET Core apps on Windows.</p>
+<p>You can read more about the changes in Visual Studio 2017 in the <a href="/en-us/visualstudio/releasenotes/vs2017-relnotes" data-linktype="absolute-path">release notes</a>.</p>
+<!-- markdownlint-disable MD025 -->
+<div class="tabGroup" id="tabgroup_CeZOj-G++Q">
+<ul role="tablist">
+<li role="presentation">
+<a href="#tabpanel_CeZOj-G++Q_netcore2x" role="tab" aria-controls="tabpanel_CeZOj-G++Q_netcore2x" data-tab="netcore2x" tabindex="0" aria-selected="true" data-linktype="self-bookmark">.NET Core 2.x</a>
+</li>
+<li role="presentation">
+<a href="#tabpanel_CeZOj-G++Q_netcore1x" role="tab" aria-controls="tabpanel_CeZOj-G++Q_netcore1x" data-tab="netcore1x" tabindex="-1" data-linktype="self-bookmark">.NET Core 1.x</a>
+</li>
+</ul>
+<section id="tabpanel_CeZOj-G++Q_netcore2x" role="tabpanel" data-tab="netcore2x">
+
+<p>To develop .NET Core apps in Visual Studio 2017 using the .NET Core 2.2 SDK:</p>
+<ol>
+<li><a href="/en-us/visualstudio/install/install-visual-studio" data-linktype="absolute-path">Download and install Visual Studio 2017 version 15.9.0 or higher</a> with the <strong>.NET Core cross-platform development</strong> workload (in the <strong>Other Toolsets</strong> section) selected.</li>
+</ol>
+<p><img src="media/windows-prerequisites/vs-2017-workloads.jpg" alt="Screenshot of Visual Studio 2017 installation with the &quot;.NET Core cross-platform development&quot; workload selected" data-linktype="relative-path"></p>
+<p>After the <strong>.NET Core cross-platform development</strong> toolset is installed, Visual Studio usually installs a previous version of the .NET Core SDK.
+For example, Visual Studio 2017 15.9 uses .NET Core 2.1 SDK by default after the workload is installed.</p>
+<p>To update Visual Studio to use .NET Core 2.2 SDK:</p>
+<ol>
+<li><p>Install the <a href="https://dotnet.microsoft.com/download" data-linktype="external">.NET Core 2.2 SDK</a>.</p>
+</li>
+<li><p>If you want your project to use the latest .NET Core runtime, retarget existing or new .NET Core projects to .NET Core 2.2 using the following instructions:</p>
+<ul>
+<li>On the <strong>Project</strong> menu, choose <strong>Properties</strong>.</li>
+<li>In the <strong>Target framework</strong> selection menu, set the value to <strong>.NET Core 2.2</strong>.</li>
+</ul>
+</li>
+</ol>
+<p><img src="media/windows-prerequisites/targeting-dotnet-core.jpg" alt="Screenshot of Visual Studio 2017 Application Project Property with the &quot;.NET Core 2.2&quot; target framework menu item selected" data-linktype="relative-path"></p>
+<p>Once you have Visual Studio configured with .NET Core 2.2 SDK, you can do the following actions:</p>
+<ul>
+<li>Open, build, and run existing .NET Core 1.x and 2.x projects.</li>
+<li>Retarget .NET Core 1.x and 2.x projects to .NET Core 2.2, build, and run.</li>
+<li>Create new .NET Core 2.2 projects.</li>
+</ul>
+</section>
+<section id="tabpanel_CeZOj-G++Q_netcore1x" role="tabpanel" data-tab="netcore1x" aria-hidden="true" hidden="hidden">
+
+<p>To develop .NET Core 1.x apps in Visual Studio, <a href="/en-us/visualstudio/install/install-visual-studio" data-linktype="absolute-path">download and install Visual Studio 2017</a> with the <strong>&quot;.NET Core cross-platform development&quot;</strong> workload (in the <strong>Other Toolsets</strong> section) selected.</p>
+<p><img src="media/windows-prerequisites/vs-workloads.jpg" alt="Screenshot of Visual Studio 2017 installation with the &quot;.NET Core cross-platform development&quot; workload selected" data-linktype="relative-path"></p>
+<div class="IMPORTANT">
+<p>Important</p>
+<p>It's possible to use Visual Studio 2015 for .NET Core 1.x development, but it's not recommended for the following reasons:</p>
+<ul>
+<li>The .NET Core tooling is a preview version, which is not supported.</li>
+<li>The projects are project.json-based, which is deprecated.</li>
+</ul>
+<p>For more information about the project format changes, see <a href="tools/cli-msbuild-architecture" data-linktype="relative-path">High-level overview of changes</a>.</p>
+</div>
+</section>
+</div>
+
+<p><a name="vs-mapping"></a></p>
+<div class="TIP">
+<p>Tip</p>
+<p>To verify your Visual Studio version:</p>
+<ul>
+<li>On the <strong>Help</strong> menu, choose <strong>About Microsoft Visual Studio</strong>.</li>
+<li>In the <strong>About Microsoft Visual Studio</strong> dialog, verify the version number.
+<ul>
+<li>For .NET Core 3.0 Preview 3 apps, Visual Studio 2019 version 16.0 or higher.</li>
+<li>For .NET Core 2.2 apps, Visual Studio 2017 version 15.9 or higher.</li>
+<li>For .NET Core 2.1 apps, Visual Studio 2017 version 15.7 or higher.</li>
+<li>For .NET Core 1.x apps, Visual Studio 2017 version 15.0 or higher.</li>
+</ul>
+</li>
+</ul>
+</div>
+
+						<!-- </content> -->
+
+						</main>
+
+						<!-- rating mobile section -->
+								<div class="is-hidden-desktop has-border-top has-margin-top-large has-padding-top-small">
+<div data-bi-name="rating" class="feedback-verbatim has-border-bottom has-padding-bottom-small has-margin-bottom-small">
+	<div class="binary-rating">
+		<div class="binary-rating-buttons">
+			<h3 class="has-text-weight-semibold has-margin-top-none has-margin-bottom-small">Is this page helpful?</h3>
+			<div>
+				<button class="thumb-rating like has-inner-focus has-padding-left-extra-small has-padding-right-extra-small" title="Yes" data-bi-name="rating-yes" data-bi-sat="1">
+					<span class="icon docon docon-like" aria-hidden="true"></span><span>Yes</span>
+				</button>
+				<button class="thumb-rating dislike has-inner-focus has-padding-none has-padding-right-extra-small" title="No" data-bi-name="rating-no" data-bi-sat="0" aria-expanded="false" aria-haspopup="true" aria-controls="rating-feedback">
+					<span class="icon docon docon-dislike" aria-hidden="true"></span><span>No</span>
+				</button>
+			</div>
+		</div>
+		<form class="feedback-verbatim-form is-hidden">
+			<div class="verbatim-textarea box is-relative has-box-shadow-none has-border has-margin-top-small has-padding-extra-small is-size-8">
+				<label for="rating-feedback-mobile" class="visually-hidden">Any additional feedback?</label>
+				<textarea id="rating-feedback-mobile" rows="4" maxlength="999" placeholder="Any additional feedback?" required class="textarea has-border-none has-box-shadow-none has-inner-focus"></textarea>
+			</div>
+			<div class="buttons is-right has-margin-top-medium has-margin-right-extra-small">
+				<button class="skip-rating button is-text is-link is-small" type="button">Skip</button>
+				<button disabled class="submit-rating button is-primary is-small" type="submit" data-bi-name="rating-verbatim">Submit</button>
+			</div>
+		</form>
+	</div>
+	<div class="thankyou-rating is-hidden">
+		<p>Thank you.</p>
+	</div>
+</div>								</div>
+						<!-- end rating mobile section -->
+
+						<!-- feedback section -->
+
+
+
+<section class="feedback-section" data-bi-name="feedback-section">
+
+	<h2 id="feedback">Feedback</h2>
+
+	<div class="alert choose-feedback-type">
+		<p id="send-feedback-about" aria-hidden="true">Send feedback about</p>
+
+		<div class="choose-feedback-buttons">
+			<a class="button feedback-type-product has-margin-bottom-small" aria-label="Send feedback about this product" href="https://developercommunity.visualstudio.com/spaces/61/index.html" data-bi-name="product-feedback">
+				<span>This product</span>
+				<span class="icon docon docon-navigate-external" aria-hidden="true"></span>
+			</a>
+
+			<div class="field has-addons is-inline-flex has-margin-bottom-small">
+				<div class="control has-margin-top-none has-margin-bottom-none">
+					<button class="button feedback-sign-in-button has-text-wrap" aria-label="Send feedback about this page" data-bi-name="feedback-sign-in">
+						<span class="icon docon docon-brand-github" aria-hidden="true"></span>
+						<span>This page</span>
+					</button>
+				</div>
+				<div class="control dropdown has-caret has-margin-top-none has-margin-bottom-none">
+					<button class="button dropdown-trigger is-full-height" aria-describedby="send-feedback-about" aria-expanded="false" aria-controls="fbm0" aria-label="Additional feedback options" data-bi-name="documentation-feedback-menu">
+						<span class="icon" aria-hidden="true">
+							<span class="docon docon-chevron-down-light expanded-indicator"></span>
+						</span>
+					</button>
+					<div id="fbm0" class="dropdown-menu documentation-feedback-menu">
+						You may also leave feedback directly on <a data-bi-name="create-issue-on-github">GitHub <span class="docon docon-navigate-external" aria-hidden="true"></span></a>.					</div>
+				</div>
+			</div>
+
+			<div class="field has-addons is-inline-flex has-margin-bottom-small" hidden>
+				<div class="control has-margin-top-none has-margin-bottom-none">
+					<button class="button feedback-form-toggle" aria-describedby="send-feedback-about" aria-expanded="false" aria-controls="feedback-form"
+						data-bi-name="documentation-feedback">
+This page					</button>
+				</div>
+				<div class="control dropdown has-caret has-margin-top-none has-margin-bottom-none">
+					<button class="button dropdown-trigger" aria-describedby="send-feedback-about" aria-expanded="false" aria-controls="fbm1" aria-label="Additional feedback options" data-bi-name="documentation-feedback-menu">
+						<span class="icon" aria-hidden="true">
+							<span class="docon docon-chevron-down-light expanded-indicator"></span>
+						</span>
+					</button>
+					<div id="fbm1" class="dropdown-menu documentation-feedback-menu">
+						You may also leave feedback directly on <a data-bi-name="create-issue-on-github">GitHub <span class="docon docon-navigate-external" aria-hidden="true"></span></a>.					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<form class="feedback-form" id="feedback-form" accept-charset="UTF-8" autocomplete="off" action="javascript:" hidden>
+		<h3 class="feedback-form-heading current-user">
+			<img class="avatar" alt="Avatar" width="36" height="36" aria-hidden="true">
+			<span class="username" aria-hidden="true"></span>
+			<span class="visually-hidden">Liquid error: Can't find the localized string giveDocumentationFeedback for template Conceptual.</span>
+		</h3>
+
+		<label>
+			<span class="visually-hidden">Issue Title</span>
+			<input class="input is-radiusless has-margin-bottom-small" name="title" type="text" placeholder="Issue Title" required pattern=".*[^\s]+.*">
+		</label>
+		<label>
+			<span class="visually-hidden">Leave a comment</span>
+			<textarea name="body" placeholder="Leave a comment" class="textarea is-radiusless" required></textarea>
+		</label>
+
+		<div class="action-container">
+			<button class="button is-primary" type="submit" name="submit">Submit feedback</button>
+		</div>
+	</form>
+
+	<div class="feedback-status alert is-loading">
+		<p>Loading feedback...</p>
+	</div>
+
+	<div class="feedback-tab-group tabGroup" data-tab-group-independent hidden>
+		<ul role="tablist">
+			<li role="presentation">
+				<a href="#tabpanel-issues-open" role="tab" aria-controls="tabpanel-issues-open" data-tab="issues-open"></a>
+			</li>
+			<li role="presentation">
+				<a href="#tabpanel-issues-closed" role="tab" aria-controls="tabpanel-issues-closed" data-tab="issues-closed"></a>
+			</li>
+		</ul>
+		<section id="tabpanel-issues-open" role="tabpanel" data-tab="issues-open">
+			<div class="no-issues-placeholder">There are no open issues</div>
+			<ul class="github-issues-list" aria-label="Open Issues"></ul>
+		</section>
+		<section id="tabpanel-issues-closed" role="tabpanel" data-tab="issues-closed">
+			<div class="no-issues-placeholder">There are no closed issues</div>
+			<ul class="github-issues-list" aria-label="Closed Issues"></ul>
+		</section>
+	</div>
+	<div class="action-container">
+		<a class="view-on-github" href="https://github.com/dotnet/docs/issues" data-bi-name="view-on-github"
+		 hidden>
+			<span class="docon docon-brand-github" aria-hidden="true"></span>
+			<span>View on GitHub</span>
+			<span class="docon docon-navigate-external" aria-hidden="true"></span>
+		</a>
+	</div>
+</section>
+
+
+						<!-- end feedback section -->
+
+						<div class="footerContainer is-visible-interactive has-default-focus ">
+<footer id="footer-interactive" data-bi-name="footer" class="footer-layout">
+
+    <a data-mscc-ic="false" class="locale-selector-link" href="#" data-bi-name="select-locale"><span class="icon docon docon-world is-size-4 has-margin-right-small" aria-hidden="true"></span><span class="local-selector-link-text has-inner-focus"></span></a>
+
+    <ul class="links" data-bi-name="footerlinks">
+		<li><a data-mscc-ic="false" href="https://docs.microsoft.com/previous-versions/" data-bi-name="archivelink">Previous Version Docs</a></li>
+		<li><a data-mscc-ic="false" href="https://docs.microsoft.com/teamblog" data-bi-name="bloglink">Blog</a></li>
+		<li><a data-mscc-ic="false" href="https://docs.microsoft.com/contribute" data-bi-name="contributorGuide">Contribute</a></li>
+			<li><a data-mscc-ic="false" href="https://go.microsoft.com/fwlink/?LinkId=521839" data-bi-name="privacy">Privacy &amp; Cookies</a></li>
+		<li><a data-mscc-ic="false" href="/en-us/legal/termsofuse" data-bi-name="termsofuse">Terms of Use</a></li>
+		<li><a data-mscc-ic="false" href="https://aka.ms/sitefeedback" data-bi-name="feedback">Site Feedback</a></li>
+		<li><a data-mscc-ic="false" href="https://www.microsoft.com/en-us/legal/intellectualproperty/Trademarks/EN-US.aspx" data-bi-name="trademarks">Trademarks</a></li>
+    </ul>
+</footer>
+						</div>
+					</div>
+
+					<div id="page-actions" class="right-container column is-one-quarter is-one-fifth-desktop is-hidden-mobile is-hidden-tablet-only" data-bi-name="pageactions" role="complementary" aria-label="Page Actions">
+							<div id="affixed-right-container" class="doc-outline is-fixed is-vertically-scrollable">
+<div data-bi-name="rating" class="feedback-verbatim has-border-bottom has-padding-bottom-small has-margin-bottom-small">
+	<div class="binary-rating">
+		<div class="binary-rating-buttons">
+			<h3 class="has-text-weight-semibold has-margin-top-none has-margin-bottom-small">Is this page helpful?</h3>
+			<div>
+				<button class="thumb-rating like has-inner-focus has-padding-left-extra-small has-padding-right-extra-small" title="Yes" data-bi-name="rating-yes" data-bi-sat="1">
+					<span class="icon docon docon-like" aria-hidden="true"></span><span>Yes</span>
+				</button>
+				<button class="thumb-rating dislike has-inner-focus has-padding-none has-padding-right-extra-small" title="No" data-bi-name="rating-no" data-bi-sat="0" aria-expanded="false" aria-haspopup="true" aria-controls="rating-feedback">
+					<span class="icon docon docon-dislike" aria-hidden="true"></span><span>No</span>
+				</button>
+			</div>
+		</div>
+		<form class="feedback-verbatim-form is-hidden">
+			<div class="verbatim-textarea box is-relative has-box-shadow-none has-border has-margin-top-small has-padding-extra-small is-size-8">
+				<label for="rating-feedback-mobile" class="visually-hidden">Any additional feedback?</label>
+				<textarea id="rating-feedback-mobile" rows="4" maxlength="999" placeholder="Any additional feedback?" required class="textarea has-border-none has-box-shadow-none has-inner-focus"></textarea>
+			</div>
+			<div class="buttons is-right has-margin-top-medium has-margin-right-extra-small">
+				<button class="skip-rating button is-text is-link is-small" type="button">Skip</button>
+				<button disabled class="submit-rating button is-primary is-small" type="submit" data-bi-name="rating-verbatim">Submit</button>
+			</div>
+		</form>
+	</div>
+	<div class="thankyou-rating is-hidden">
+		<p>Thank you.</p>
+	</div>
+</div>								<nav id="side-doc-outline" data-bi-name="intopic toc" role="navigation" aria-label="Article Outline">
+									<h3>In this article</h3>
+								</nav>
+							</div>
+					</div>
+
+					<!--end of div.columns -->
+				</div>
+
+			<!--end of .primary-holder -->
+			</section>
+
+			<aside id="interactive-container" class="interactive-container is-visible-interactive column has-body-background-dark ">
+			</aside>
+		</div>
+
+		<!--end of .mainContainer -->
+	</div>
+
+	<div id="openFeedbackContainer" class="openfeedback-container"></div>
+
+	<div class="footerContainer has-default-focus is-hidden-interactive ">
+<footer id="footer" data-bi-name="footer" class="footer-layout uhf-container has-padding" role="contentinfo">
+
+    <a data-mscc-ic="false" class="locale-selector-link" href="#" data-bi-name="select-locale"><span class="icon docon docon-world is-size-4 has-margin-right-small" aria-hidden="true"></span><span class="local-selector-link-text"></span></a>
+
+    <ul class="links" data-bi-name="footerlinks">
+		<li><a data-mscc-ic="false" href="https://docs.microsoft.com/previous-versions/" data-bi-name="archivelink">Previous Version Docs</a></li>
+		<li><a data-mscc-ic="false" href="https://docs.microsoft.com/teamblog" data-bi-name="bloglink">Blog</a></li>
+		<li><a data-mscc-ic="false" href="https://docs.microsoft.com/contribute" data-bi-name="contributorGuide">Contribute</a></li>
+			<li><a data-mscc-ic="false" href="https://go.microsoft.com/fwlink/?LinkId=521839" data-bi-name="privacy">Privacy &amp; Cookies</a></li>
+		<li><a data-mscc-ic="false" href="/en-us/legal/termsofuse" data-bi-name="termsofuse">Terms of Use</a></li>
+		<li><a data-mscc-ic="false" href="https://aka.ms/sitefeedback" data-bi-name="feedback">Site Feedback</a></li>
+		<li><a data-mscc-ic="false" href="https://www.microsoft.com/en-us/legal/intellectualproperty/Trademarks/EN-US.aspx" data-bi-name="trademarks">Trademarks</a></li>
+    </ul>
+</footer>
+	</div>
+
+		<script type="text/x-mathjax-config">
+			MathJax.Hub.Config({
+				showMathMenu: false,
+				showMathMenuMSIE: false,
+				tex2jax: {
+					inlineMath: [['$','$'], ['\\(','\\)']],
+					processEscapes: true
+				}
+			});
+		</script>
+		<script src="https://static.docs.com/ui/third-party/MathJax/2.7.2/MathJax.js?config=TeX-AMS_CHTML" integrity="sha384-RLsAi7wiVvnmHrRjlVvUjU45C0bfsIBg6Gsxue6azjJi+lA5q5uK+XbGzO3yn5g1" crossorigin="anonymous"></script>
+	<div id="action-panel" role="region" aria-label="Action Panel" class="action-panel has-default-focus" tabindex="-1"></div>
+</body>
+</html>

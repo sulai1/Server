@@ -1,0 +1,14 @@
+/root/WebDemo/bin/Debug/netcoreapp2.2/WebDemo.deps.json
+/root/WebDemo/bin/Debug/netcoreapp2.2/WebDemo.runtimeconfig.json
+/root/WebDemo/bin/Debug/netcoreapp2.2/WebDemo.runtimeconfig.dev.json
+/root/WebDemo/bin/Debug/netcoreapp2.2/WebDemo.dll
+/root/WebDemo/bin/Debug/netcoreapp2.2/WebDemo.pdb
+/root/WebDemo/obj/Debug/netcoreapp2.2/WebDemo.csprojAssemblyReference.cache
+/root/WebDemo/obj/Debug/netcoreapp2.2/WebDemo.csproj.CoreCompileInputs.cache
+/root/WebDemo/obj/Debug/netcoreapp2.2/WebDemo.RazorAssemblyInfo.cache
+/root/WebDemo/obj/Debug/netcoreapp2.2/WebDemo.RazorAssemblyInfo.cs
+/root/WebDemo/obj/Debug/netcoreapp2.2/WebDemo.AssemblyInfoInputs.cache
+/root/WebDemo/obj/Debug/netcoreapp2.2/WebDemo.AssemblyInfo.cs
+/root/WebDemo/obj/Debug/netcoreapp2.2/WebDemo.RazorTargetAssemblyInfo.cache
+/root/WebDemo/obj/Debug/netcoreapp2.2/WebDemo.dll
+/root/WebDemo/obj/Debug/netcoreapp2.2/WebDemo.pdb
