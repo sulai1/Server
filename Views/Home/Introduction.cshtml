@@ -1,0 +1,59 @@
+﻿
+@{
+    Layout = "_Layout";
+    ViewData["Title"] = "Home";
+}
+
+<h1>Introduction</h1>
+
+<p>
+    The purpose of this server is to access all my documentations, scripts and other usefull stuff and
+    store safely. Therefore i am setting up a linux server with a webpage database and what i else come up with.
+    Here i will document the begining until i get the system up and running.
+    For a more complete description take a look <a href="http://codeandinterests.com/2018/10/31/asp-net-core-with-apache-on-ubuntu/"> here</a>.
+</p>
+<h2>Setting up the Server</h2>
+<p>
+    First we have to sort out the server work. We first install dotnet:
+    install on linux<br />
+<pre><code>wget -q https://packages.microsoft.com/config/ubuntu/18.04/packages-microsoft-prod.deb -O packages-microsoft-prod.deb 
+sudo dpkg -i packages-microsoft-prod.deb
+            
+sudo add-apt-repository universe
+sudo apt-get install apt-transport-https
+sudo apt-get update
+sudo apt-get install dotnet-sdk-2.2
+</code></pre>
+    <br />
+    install on windows<br />
+    Download for windows can be found <a href="https://dotnet.microsoft.com/download">here</a>
+</p>
+<h2>Setting up DOT.NET</h2>
+Use the Kestrel server from dotnet to listen to port 80:
+<pre><code>public class Program
+{
+    public static void Main(string[] args)
+    {
+        var host = new WebHostBuilder()
+        .UseKestrel()
+        .UseUrls("http://*:80")
+        .UseContentRoot(Directory.GetCurrentDirectory())
+        .UseStartup<Startup>
+        ()
+        .Build();
+
+        host.Run();
+    }
+
+}
+</code></pre>
+and in the Startup directlly respond with a String:
+<pre><code>app.Run(async (context) =>
+{
+    await context.Response.WriteAsync("Hello World!");
+});
+</code></pre>
+if we run the code with <code>dotnet</code> run from within the projectfolder the server should start listening. Test it by entering the IP in your browser.
+
+<br />
+<a href="FirstPage">Next</a>

@@ -1,0 +1,65 @@
+﻿@{
+    Layout = "_Layout";
+    ViewData["Title"] = "FirstPage";
+}
+
+<h1>FirstPage</h1>
+<p>
+    Here i will demonstrate how to use the VC part of the MVC Pattern.
+    To start we will create an empty Contoller and a View.
+    Then we will create a routing to route between two differnt pages.
+</p>
+<h2>Create the Controller</h2>
+Add a folder called Controllers to the project.
+In Visual studio rightclivk on it Add - Controller and add an Empty MVC-Controller and call it HomeController.
+The generated file schoul look like this:
+<pre><code>public class HomeController : Controller
+{
+    public IActionResult Index()
+    {
+        return View();
+    }
+}
+</code></pre>
+<h2>Creating the View</h2>
+<p>
+    Notice the name of the controller and function.
+    The Prefix of the controller 'Home' is the controllers name and the function is the action name.
+    When no action is specified or the action 'Index' is called the Index function is called.
+    The action returns an IActionresult witch in this case is a view.
+    If no parameter is provided, by default the view is assuemed to be in one of the following folder:
+    <ul>
+        <li>   ~/Views/Home/Index.cshtml                 </li>
+        <li>   ~/Views/Shared/Home/Index.cshtml          </li>
+    </ul>
+    So why not simply create one there by right clicking on the method name and select Add View.
+    Simply place some html in there and save it.
+</p>
+<h2>Create a Routing</h2>
+<p>
+    Fist we have to add MVC to our Services and set it to compatibility mode(optional):
+<pre><code>public void ConfigureServices(IServiceCollection services)
+{
+    services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+}
+</code></pre>    Next we add a route called default:
+<pre><code>app.UseMvc(routes =>
+{
+    routes.MapRoute(
+        "Default",                                              // Route name
+        "{controller}/{action}/{id}",                           // URL with parameters
+        new { controller = "Home", action = "Index", id = "" }  // Parameter defaults
+    );
+});
+</code></pre>De default value is set to our HomeController and its Index Action.
+</p>
+<h2>Layout</h2>
+<p>
+    The Views/Shared floder can hold partial html code that can be included in other cshtml files.
+    Lets say we copy the content of the layout from <a href="https://docs.microsoft.com/en-us/aspnet/core/mvc/views/layout?view=aspnetcore-2.2">this article</a>
+    to a file called _Layout.cshtml in that folder, We can now include it in a cshtml via
+    <pre><code>@@{
+     Layout = "_Layout";
+}
+</code></pre>
+</p>

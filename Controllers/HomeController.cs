@@ -10,7 +10,17 @@ namespace WebDemo.Controler
     {
         public IActionResult Index()
         {
-            return View("Home");
+            return View();
+        }
+
+        public IActionResult Introduction()
+        {
+            return View();
+        }
+
+        public IActionResult FirstPage()
+        {
+            return View();
         }
     }
 }
