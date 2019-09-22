@@ -16,6 +16,7 @@ namespace WebDemo
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddMvc();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -25,14 +26,20 @@ namespace WebDemo
             {
                 app.UseDeveloperExceptionPage();
             }
-	    app.UseForwardedHeaders(new ForwardedHeadersOptions
-	    {
-		ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto
-	    });
-            app.Run(async (context) =>
+            app.UseForwardedHeaders(new ForwardedHeadersOptions
             {
-                await context.Response.WriteAsync("Hello World!");
+                ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto
             });
+
+            app.UseMvc(routes =>
+            {
+                routes.MapRoute("default", "{controller=Home}/{action=Index}/{id?}");
+            });
+
+            //app.Run(async (context) =>
+            //{
+            //    await context.Response.WriteAsync("Hello World!");
+            //});
         }
     }
 }

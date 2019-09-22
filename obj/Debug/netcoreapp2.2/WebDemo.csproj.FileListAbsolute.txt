@@ -26,3 +26,12 @@ C:\Users\sascha\source\repos\Server\obj\Debug\netcoreapp2.2\WebDemo.RazorAssembl
 C:\Users\sascha\source\repos\Server\obj\Debug\netcoreapp2.2\WebDemo.AssemblyInfoInputs.cache
 C:\Users\sascha\source\repos\Server\obj\Debug\netcoreapp2.2\WebDemo.AssemblyInfo.cs
 C:\Users\sascha\source\repos\Server\obj\Debug\netcoreapp2.2\WebDemo.RazorTargetAssemblyInfo.cache
+C:\Users\sascha\source\repos\Server\bin\Debug\netcoreapp2.2\WebDemo.Views.dll
+C:\Users\sascha\source\repos\Server\bin\Debug\netcoreapp2.2\WebDemo.Views.pdb
+C:\Users\sascha\source\repos\Server\obj\Debug\netcoreapp2.2\WebDemo.TagHelpers.input.cache
+C:\Users\sascha\source\repos\Server\obj\Debug\netcoreapp2.2\WebDemo.TagHelpers.output.cache
+C:\Users\sascha\source\repos\Server\obj\Debug\netcoreapp2.2\WebDemo.RazorCoreGenerate.cache
+C:\Users\sascha\source\repos\Server\obj\Debug\netcoreapp2.2\WebDemo.RazorTargetAssemblyInfo.cs
+C:\Users\sascha\source\repos\Server\obj\Debug\netcoreapp2.2\WebDemo.Views.pdb
+C:\Users\sascha\source\repos\Server\obj\Debug\netcoreapp2.2\WebDemo.csproj.CopyComplete
+C:\Users\sascha\source\repos\Server\obj\Debug\netcoreapp2.2\Razor\Views\Home\Home.g.cshtml.cs
