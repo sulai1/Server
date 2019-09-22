@@ -12,3 +12,5 @@
 /root/WebDemo/obj/Debug/netcoreapp2.2/WebDemo.RazorTargetAssemblyInfo.cache
 /root/WebDemo/obj/Debug/netcoreapp2.2/WebDemo.dll
 /root/WebDemo/obj/Debug/netcoreapp2.2/WebDemo.pdb
+C:\Users\sascha\source\repos\Server\obj\Debug\netcoreapp2.2\WebDemo.dll
+C:\Users\sascha\source\repos\Server\obj\Debug\netcoreapp2.2\WebDemo.pdb

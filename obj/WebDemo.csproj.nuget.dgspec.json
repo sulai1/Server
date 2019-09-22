@@ -1,28 +1,30 @@
 {
   "format": 1,
   "restore": {
-    "/root/WebDemo/WebDemo.csproj": {}
+    "C:\\Users\\sascha\\source\\repos\\Server\\WebDemo.csproj": {}
   },
   "projects": {
-    "/root/WebDemo/WebDemo.csproj": {
+    "C:\\Users\\sascha\\source\\repos\\Server\\WebDemo.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/root/WebDemo/WebDemo.csproj",
+        "projectUniqueName": "C:\\Users\\sascha\\source\\repos\\Server\\WebDemo.csproj",
         "projectName": "WebDemo",
-        "projectPath": "/root/WebDemo/WebDemo.csproj",
-        "packagesPath": "/root/.nuget/packages/",
-        "outputPath": "/root/WebDemo/obj/",
+        "projectPath": "C:\\Users\\sascha\\source\\repos\\Server\\WebDemo.csproj",
+        "packagesPath": "C:\\Users\\sascha\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\sascha\\source\\repos\\Server\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "/usr/share/dotnet/sdk/NuGetFallbackFolder"
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "/root/.nuget/NuGet/NuGet.Config"
+          "C:\\Users\\sascha\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp2.2"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
