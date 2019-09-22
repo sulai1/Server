@@ -1,9 +1,4 @@
-﻿################################################################################
-# Diese .gitignore-Datei wurde von Microsoft(R) Visual Studio automatisch erstellt.
-################################################################################
-
-/.vs/Server/v16/Server/sqlite3/db.lock
-
+﻿<<<<<<<<< Temporary merge branch 1
 *.swp
 *.*~
 project.lock.json
@@ -41,3 +36,10 @@ msbuild.wrn
 
 # Visual Studio 2015
 .vs/
+=========
+﻿################################################################################
+# Diese .gitignore-Datei wurde von Microsoft(R) Visual Studio automatisch erstellt.
+################################################################################
+
+/.vs/Server/v16/Server/sqlite3/db.lock
+>>>>>>>>> Temporary merge branch 2
