@@ -14,3 +14,15 @@
 /root/WebDemo/obj/Debug/netcoreapp2.2/WebDemo.pdb
 C:\Users\sascha\source\repos\Server\obj\Debug\netcoreapp2.2\WebDemo.dll
 C:\Users\sascha\source\repos\Server\obj\Debug\netcoreapp2.2\WebDemo.pdb
+C:\Users\sascha\source\repos\Server\bin\Debug\netcoreapp2.2\WebDemo.deps.json
+C:\Users\sascha\source\repos\Server\bin\Debug\netcoreapp2.2\WebDemo.runtimeconfig.json
+C:\Users\sascha\source\repos\Server\bin\Debug\netcoreapp2.2\WebDemo.runtimeconfig.dev.json
+C:\Users\sascha\source\repos\Server\bin\Debug\netcoreapp2.2\WebDemo.dll
+C:\Users\sascha\source\repos\Server\bin\Debug\netcoreapp2.2\WebDemo.pdb
+C:\Users\sascha\source\repos\Server\obj\Debug\netcoreapp2.2\WebDemo.csprojAssemblyReference.cache
+C:\Users\sascha\source\repos\Server\obj\Debug\netcoreapp2.2\WebDemo.csproj.CoreCompileInputs.cache
+C:\Users\sascha\source\repos\Server\obj\Debug\netcoreapp2.2\WebDemo.RazorAssemblyInfo.cache
+C:\Users\sascha\source\repos\Server\obj\Debug\netcoreapp2.2\WebDemo.RazorAssemblyInfo.cs
+C:\Users\sascha\source\repos\Server\obj\Debug\netcoreapp2.2\WebDemo.AssemblyInfoInputs.cache
+C:\Users\sascha\source\repos\Server\obj\Debug\netcoreapp2.2\WebDemo.AssemblyInfo.cs
+C:\Users\sascha\source\repos\Server\obj\Debug\netcoreapp2.2\WebDemo.RazorTargetAssemblyInfo.cache
