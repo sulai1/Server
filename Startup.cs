@@ -8,17 +8,30 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.AspNetCore.HttpOverrides;
 using Microsoft.AspNetCore.Mvc;
+using WebDemo.Models;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 
 namespace WebDemo
 {
     public class Startup
     {
+        private IConfiguration config;
+
+        public Startup(IConfiguration config)
+        {
+            this.config = config;
+        }
+
         // This method gets called by the runtime. Use this method to add services to the container.
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddMvc()
-                .SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            var connectionString = config.GetConnectionString("AppDBContext");
+            services.AddDbContext<AppDBContext>(options => 
+                options.UseSqlServer(connectionString)
+            );
+            services.AddMvc(); 
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -36,10 +49,15 @@ namespace WebDemo
             app.UseMvc(routes =>
             {
                 routes.MapRoute(
-                    "Default",                                              // Route name
-                    "{controller}/{action}/{id}",                           // URL with parameters
-                    new { controller = "Home", action = "Index", id = "" }  // Parameter defaults
-                );
+                        "actionDefault",                                              // Route name
+                        "{area:exists}/{controller}/{action}/{id}",                           // URL with parameters
+                        new { controller = "Home", action = "Index", id = "" }  // Parameter defaults
+                    );
+                routes.MapRoute(
+                     "Default",                                              // Route name
+                     "{controller}/{action}/{id}",                           // URL with parameters
+                     new { controller = "Home", action = "Index", id = "" }  // Parameter defaults
+                 );
             });
 
             //app.Run(async (context) =>
