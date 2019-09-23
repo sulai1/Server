@@ -29,7 +29,8 @@ sudo apt-get install dotnet-sdk-2.2
     Download for windows can be found <a href="https://dotnet.microsoft.com/download">here</a>
 </p>
 <h2>Setting up DOT.NET</h2>
-Use the Kestrel server from dotnet to listen to port 80:
+<p>
+    Use the Kestrel server from dotnet to listen to port 80:
 <pre><code>public class Program
 {
     public static void Main(string[] args)
@@ -47,13 +48,12 @@ Use the Kestrel server from dotnet to listen to port 80:
 
 }
 </code></pre>
-and in the Startup directlly respond with a String:
+    and in the Startup directlly respond with a String:
 <pre><code>app.Run(async (context) =>
 {
     await context.Response.WriteAsync("Hello World!");
 });
 </code></pre>
-if we run the code with <code>dotnet</code> run from within the projectfolder the server should start listening. Test it by entering the IP in your browser.
-
-<br />
+    if we run the code with <code>dotnet</code> run from within the projectfolder the server should start listening. Test it by entering the IP in your browser.
+</p>
 <a href="FirstPage">Next</a>

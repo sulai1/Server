@@ -22,5 +22,16 @@ namespace WebDemo.Controler
         {
             return View();
         }
+
+        public IActionResult DatabaseConnection()
+        {
+            return View();
+        }
+
+        public IActionResult Linux()
+        {
+            return View();
+        }
+
     }
 }
