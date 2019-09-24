@@ -29,7 +29,7 @@ namespace WebDemo
         {
             var connectionString = config.GetConnectionString("AppDBContext");
             services.AddDbContext<AppDBContext>(options => 
-                options.UseSqlServer(connectionString)
+                options.UseMySQL(connectionString)
             );
             services.AddMvc(); 
         }
