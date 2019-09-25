@@ -28,7 +28,7 @@ namespace WebDemo.Controler
             return View();
         }
 
-        public IActionResult Linux()
+        public IActionResult Identity()
         {
             return View();
         }

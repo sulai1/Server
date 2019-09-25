@@ -30,7 +30,18 @@ sudo apt-get install dotnet-sdk-2.2
 </p>
 <h2>Setting up DOT.NET</h2>
 <p>
-    Use the Kestrel server from dotnet to listen to port 80:
+    First we check that the InProcess is defined in the project.cshtml:
+    <pre><code><text>
+&ltPropertyGroup&gt
+    &ltTargetFramework&gtnetcoreapp2.2&lt/TargetFramework&gt
+    &ltAspNetCoreHostingModel&gtInProcess&lt/AspNetCoreHostingModel&gt
+    &ltGeneratePackageOnBuild&gttrue&lt/GeneratePackageOnBuild&gt#
+    &lt/PropertyGroup&gt
+</text></code></pre>
+    Ths means that kestrell is directly lisen to external messages on the port. This is called in process hosting.
+    For out of process hosting you need another hosting application that forwards external messages to internal ports.
+    For simplicity we use the Kestrel for in process hosting.
+    To set the server to lsiten on port 80 we initialize the WebHostBuilder as follows:
 <pre><code>public class Program
 {
     public static void Main(string[] args)

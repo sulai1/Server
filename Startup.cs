@@ -1,16 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Builder;
+﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.AspNetCore.HttpOverrides;
-using Microsoft.AspNetCore.Mvc;
 using WebDemo.Models;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 
 namespace WebDemo
 {
@@ -18,25 +13,35 @@ namespace WebDemo
     {
         private IConfiguration config;
 
-        public Startup(IConfiguration config)
-        {
-            this.config = config;
-        }
+        public Startup(IConfiguration config) => this.config = config;
 
         // This method gets called by the runtime. Use this method to add services to the container.
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
+            //change the connection string in the appsettings.json
             var connectionString = config.GetConnectionString("AppDBContext");
-            services.AddDbContext<AppDBContext>(options => 
-                options.UseMySQL(connectionString)
+
+            // add the database service
+            services.AddDbContext<AppDBContext>(options =>
+                options.UseNpgsql(connectionString) // this is database specific 
             );
-            services.AddMvc(); 
+
+            // add the identity service
+            services.AddIdentity<AppUser, IdentityRole>()
+                .AddEntityFrameworkStores<AppDBContext>() // some IdentityDbContext
+                .AddDefaultTokenProviders();
+
+            services.AddAuthentication();
+
+            services.AddMvc();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
+            app.UseStatusCodePages();
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
