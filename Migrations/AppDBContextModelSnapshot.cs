@@ -145,8 +145,6 @@ namespace WebDemo.Migrations
 
                     b.Property<DateTimeOffset?>("LockoutEnd");
 
-                    b.Property<string>("MyExtraProperty");
-
                     b.Property<string>("NormalizedEmail")
                         .HasMaxLength(256);
 
@@ -183,7 +181,11 @@ namespace WebDemo.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
+                    b.Property<string>("UserId");
+
                     b.HasKey("Id");
+
+                    b.HasIndex("UserId");
 
                     b.ToTable("Articles");
                 });
@@ -231,6 +233,13 @@ namespace WebDemo.Migrations
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("WebDemo.Models.Article", b =>
+                {
+                    b.HasOne("WebDemo.Models.AppUser", "User")
+                        .WithMany("Articles")
+                        .HasForeignKey("UserId");
                 });
 #pragma warning restore 612, 618
         }

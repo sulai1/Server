@@ -1,74 +1,74 @@
-﻿using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.AspNetCore.HttpOverrides;
-using WebDemo.Models;
-using Microsoft.Extensions.Configuration;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+using WebDemo.Models;
 
 namespace WebDemo
 {
     public class Startup
     {
-        private IConfiguration config;
+        public Startup(IConfiguration configuration)
+        {
+            Configuration = configuration;
+        }
 
-        public Startup(IConfiguration config) => this.config = config;
+        public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
-        // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
-            //change the connection string in the appsettings.json
-            var connectionString = config.GetConnectionString("AppDBContext");
+            services.Configure<CookiePolicyOptions>(options =>
+            {
+                // This lambda determines whether user consent for non-essential cookies is needed for a given request.
+                options.CheckConsentNeeded = context => true;
+                options.MinimumSameSitePolicy = SameSiteMode.None;
+            });
 
-            // add the database service
             services.AddDbContext<AppDBContext>(options =>
-                options.UseNpgsql(connectionString) // this is database specific 
-            );
+                options.UseNpgsql(
+                    Configuration.GetConnectionString("DefaultConnection")));
+            services.AddDefaultIdentity<AppUser>()
+                .AddEntityFrameworkStores<AppDBContext>();
 
-            // add the identity service
-            services.AddIdentity<AppUser, IdentityRole>()
-                .AddEntityFrameworkStores<AppDBContext>() // some IdentityDbContext
-                .AddDefaultTokenProviders();
-
-            services.AddAuthentication();
-
-            services.AddMvc();
+            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
-            app.UseStatusCodePages();
-
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+                app.UseDatabaseErrorPage();
             }
-            app.UseForwardedHeaders(new ForwardedHeadersOptions
+            else
             {
-                ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto
-            });
+                app.UseExceptionHandler("/Home/Error");
+                app.UseHsts();
+            }
+
+            app.UseHttpsRedirection();
+            app.UseStaticFiles();
+            app.UseCookiePolicy();
+
+            app.UseAuthentication();
 
             app.UseMvc(routes =>
             {
                 routes.MapRoute(
-                        "actionDefault",                                              // Route name
-                        "{area:exists}/{controller}/{action}/{id}",                           // URL with parameters
-                        new { controller = "Home", action = "Index", id = "" }  // Parameter defaults
-                    );
-                routes.MapRoute(
-                     "Default",                                              // Route name
-                     "{controller}/{action}/{id}",                           // URL with parameters
-                     new { controller = "Home", action = "Index", id = "" }  // Parameter defaults
-                 );
+                    name: "default",
+                    template: "{controller=Home}/{action=Index}/{id?}");
             });
-
-            //app.Run(async (context) =>
-            //{
-            //    await context.Response.WriteAsync("Hello World!");
-            //});
         }
     }
 }

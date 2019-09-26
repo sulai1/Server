@@ -43,3 +43,10 @@ msbuild.wrn
 
 /.vs/Server/v16/Server/sqlite3/db.lock
 >>>>>>>>> Temporary merge branch 2
+
+################################################################################
+# custom ignores
+################################################################################
+
+# do not add database snapshot
+*ModelSnapshot.cs
