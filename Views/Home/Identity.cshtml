@@ -1,0 +1,70 @@
+﻿
+@{
+    ViewData["Title"] = "Identity";
+}
+
+<h1>Identity</h1>
+<p>
+    To be able to add users to our web page we might use the Identity package.
+    First we need to install all packages with the package manager:
+    <code>
+        <pre>PM: Install-Package Microsoft.AspNet.Identity.Owin 
+PM: Install-Package Microsoft.AspNet.Identity.EntityFramework
+PM: Install-Package Microsoft.Owin.Host.SystemWeb </pre>
+    </code>
+</p>
+<
+<h2>Add Roles and Users to the Database</h2>
+    First we have to create the neccessary models.
+    Add a user class and with IdentityUser inheritance:
+<pre><code>public class AppUser : IdentityUser
+{
+    //add your custom properties which have not included in IdentityUser before
+    public string MyExtraProperty { get; set; }  
+}</code></pre>
+    Do same thing for role:
+<pre><code>public class AppRole : IdentityRole
+{
+    public AppRole() : base() { }
+    public AppRole(string name) : base(name) { }
+    // extra properties here 
+}</code></pre>
+    if you add a migration and update the table should have our extra field.
+<h2>IdentityDbContext</h2>
+<p>
+
+    Change your DbContext parent from DbContext to <code>IdentityDbContext&ltAppUser&gt</code> like this:
+    This way we can access the following data from the database:
+    <ul>
+        <li>
+        </li>
+    </ul>
+
+<pre><code>public class MyDbContext : IdentityDbContext&ltAppUser&gt
+    {
+    // Other part of codes still same
+    // You don't need to add AppUser and AppRole
+    // since automatically added by inheriting form IdentityDbContext&ltAppUser&gt
+    }</code></pre>
+    <br />
+    if you add a migration and update the database should contain the new tables.
+</p>
+<h2>Configure the Service</h2>
+<p>
+    Again we have to add a service in our StartUp class by adding the following to our ConfigureServices method:
+    <pre><code>services.AddIdentity&ltAppUser, IdentityRole&gt()
+        .AddEntityFrameworkStores&ltAppIdentityDbContext&gt()
+        .AddDefaultTokenProviders();</code></pre>
+    the AddIdentity method’s type parameter are specified with the class used to represent users (AppUser) and the class used to represent roles (Identity Role).
+    Note that we have always specified our AppUser as parameter.
+    <br />
+    The AddEntityFrameworkStores method specifies that Identity should use EF Core and the DB Content class which in the project is AppIdentityContext class.
+    <br />
+    The final change to the Startup class is done by adding the app.UseAuthentication(); to the Configure
+</p>
+
+<h2>Controller</h2>
+<p>
+    Next we create a controller to handle the Login and Logout.
+    This time we will add a post method to fill the form in our login process.
+</p>

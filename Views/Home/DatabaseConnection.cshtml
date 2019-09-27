@@ -1,0 +1,116 @@
+﻿@{
+    Layout = "_Layout";
+    ViewData["Title"] = "DatabaseConnection";
+}
+
+<h1>DatabaseConnection</h1>
+<p>
+    To create a database connection we are using a code first aproach.
+    This means we first create our C# objects and then automaticaly create our Database tables.
+    to achieve this we need the following packages:
+    <code>
+        <pre>PM: Install-Package MySqlConnector 
+PM: Pomelo.EntityFrameworkCore.MySql</pre>
+    </code>
+</p>
+<h2>Creating thr Model</h2>
+<p>
+    First we create a simple Model to represent a simple Article in a folder called Models:
+<pre><code>public class Article
+{
+    int ArticleId{ get; set; };
+}
+    Every database field have to be declared as property with a get and set method,
+    so it can be set by the DBContext when retrieved from the database.
+    Every model class must have a primary key. By default it searches for the property named Id or NameId,
+    where Name is the name of the model class and the case is generaly ignored.
+    Each property can be anotated to specifie how it is represented in the database.
+    For a comlpete list visit <a href="https://www.learnentityframeworkcore.com/configuration/data-annotation-attributes"> this </a> page.
+</code></pre>
+</p>
+<h2>The DBContext</h2>
+<p>
+    The DBContext knows about the database connection.
+    Also it holds the tables of our database as its DBSet properties.
+<pre><code>
+public class AppDBContext : DbContext
+{
+     public Article.Article Atricles { get; set; }
+     
+     public AppDBContext(DbContextOptions<AppDBContext>
+        options) : base(options)
+     {
+     }
+}
+</code></pre>
+</p>
+The options parameter will be set using Dependency Injection.
+<h2>Setting up a Connection</h2>
+<p>
+    For our DbContextOptions we need to set the connection string.
+    We can obtain a connection string by using the Server Object Explorer in Visual Stuio.
+    Click on View/Server Explorer and click add.
+    Choose MySQL Database and fill out the required information you obtained by installing SQLWorkbench.
+    Now select the new database field called connection string into the clipboard.
+    We store our connection string in a configuration file in our document root(appsettings.json):
+<pre><code>{
+    "Logging": {
+        "LogLevel": {
+            "Default": "Warning"
+        }
+    },
+    "AllowedHosts": "*",
+    "ConnectionStrings": {
+        "AppDBContext": "!paste connection string here!"
+    }
+}
+</code></pre>
+    To obtain the connection string we can store a config object on construction and access it.
+    So we need to store an IConfigoration in our Startup constructor which then gets to be injected:
+<pre><code> private IConfiguration config;
+
+    public Startup(IConfiguration config)
+    {
+        this.config = config;
+    }
+</code></pre>
+    Only the following service types can be injected into the Startup constructor when using IHostBuilder:
+    <ul>
+        <li>IWebHostEnvironment</li>
+        <li>IHostEnvironment</li>
+        <li>IConfiguration</li>
+    </ul>
+    To allow our AppDBContext to be Dependency Injection we need to add a service in our Startup.ConfigureServices:
+<pre><code>public void ConfigureServices(IServiceCollection services)
+{
+    var connectionString = config.GetConnectionString("AppDBContext");
+    services.AddDbContext<AppDBContext>(options => 
+        options.UseMySql(connectionString)
+    );
+    services.AddMvc(); 
+}</code></pre>
+    We need the MySql.Data.EntityFrameworkCore and MySqlConnector NuGet packages included to work.
+    Here we first obtain the connection string from our configuration file.
+    Than we add the AppDBContext to the available services, using the connectionString as an option.
+</p>
+<h2>Migrations</h2>
+<p>
+    To actually create our database we need to create a migration. Use the Packagemanager or a dotnet console to execute the command.
+    <br />From Packagemanager:
+    <br /><code>Add-Migration MigrationName</code>
+    <br />From dotnet:
+    <br /><code>dotnet ef migrations add MigrationName</code>
+    <br />This will create a file called MigrationName in the Migrations subfolder.
+    The file contains statements to create our table. If neccessary the migration file can be added manualy.
+    <br />To apply the changes to the database use:
+    <br />From Packagemanager:
+    <br /><code>Update Database</code>
+    <br />From dotnet:
+    <br /><code>dotnet ef database update</code>
+
+    The -verbose flag can be used to debug the output if something went wrong.
+
+    <a href="https://docs.microsoft.com/en-us/ef/core/managing-schemas/migrations/">Migration Reference.</a>
+    <br />
+    <a asp-action="Identity">Next</a>
+</p>

@@ -3,35 +3,44 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.AspNetCore.HttpOverrides;
+using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
-using WebDemo.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+using WebDemo.Models;
 
 namespace WebDemo
 {
     public class Startup
     {
-        private IConfiguration config;
-
-        public Startup(IConfiguration config)
+        public Startup(IConfiguration configuration)
         {
-            this.config = config;
+            Configuration = configuration;
         }
 
+        public IConfiguration Configuration { get; }
+
         // This method gets called by the runtime. Use this method to add services to the container.
-        // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
-            var connectionString = config.GetConnectionString("AppDBContext");
-            services.AddDbContext<AppDBContext>(options => 
-                options.UseMySQL(connectionString)
-            );
-            services.AddMvc(); 
+            services.Configure<CookiePolicyOptions>(options =>
+            {
+                // This lambda determines whether user consent for non-essential cookies is needed for a given request.
+                options.CheckConsentNeeded = context => true;
+                options.MinimumSameSitePolicy = SameSiteMode.None;
+            });
+
+            services.AddDbContext<AppDBContext>(options =>
+                options.UseNpgsql(
+                    Configuration.GetConnectionString("DefaultConnection")));
+            services.AddDefaultIdentity<AppUser>()
+                .AddEntityFrameworkStores<AppDBContext>();
+
+            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -40,30 +49,26 @@ namespace WebDemo
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+                app.UseDatabaseErrorPage();
             }
-            app.UseForwardedHeaders(new ForwardedHeadersOptions
+            else
             {
-                ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto
-            });
+                app.UseExceptionHandler("/Home/Error");
+                app.UseHsts();
+            }
+
+            app.UseHttpsRedirection();
+            app.UseStaticFiles();
+            app.UseCookiePolicy();
+
+            app.UseAuthentication();
 
             app.UseMvc(routes =>
             {
                 routes.MapRoute(
-                        "actionDefault",                                              // Route name
-                        "{area:exists}/{controller}/{action}/{id}",                           // URL with parameters
-                        new { controller = "Home", action = "Index", id = "" }  // Parameter defaults
-                    );
-                routes.MapRoute(
-                     "Default",                                              // Route name
-                     "{controller}/{action}/{id}",                           // URL with parameters
-                     new { controller = "Home", action = "Index", id = "" }  // Parameter defaults
-                 );
+                    name: "default",
+                    template: "{controller=Home}/{action=Index}/{id?}");
             });
-
-            //app.Run(async (context) =>
-            //{
-            //    await context.Response.WriteAsync("Hello World!");
-            //});
         }
     }
 }
