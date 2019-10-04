@@ -1,34 +1,31 @@
-﻿using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using System.Diagnostics;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
-using System.Security.Claims;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
 using WebDemo.Models;
 using WebDemo.Models.Articles;
 
 namespace WebDemo.Controllers
 {
-    public class ArticlesController : Controller
+    public class SlotTypesController : Controller
     {
         private readonly AppDBContext _context;
-        public UserManager<AppUser> UserManager { get; }
 
-        public ArticlesController(AppDBContext context, UserManager<AppUser> userManager)
+        public SlotTypesController(AppDBContext context)
         {
             _context = context;
-            UserManager = userManager;
         }
 
-        // GET: Articles
+        // GET: SlotTypes
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Articles.ToListAsync());
+            return View(await _context.SlotTypes.ToListAsync());
         }
 
-        // GET: Articles/Details/5
+        // GET: SlotTypes/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -36,55 +33,39 @@ namespace WebDemo.Controllers
                 return NotFound();
             }
 
-            var article = await _context.Articles
+            var slotType = await _context.SlotTypes
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (article == null)
+            if (slotType == null)
             {
                 return NotFound();
             }
 
-            return View(article);
+            return View(slotType);
         }
 
-        // GET: Articles/Create
-        [Authorize]
+        // GET: SlotTypes/Create
         public IActionResult Create()
         {
             return View();
         }
 
-
-        // POST: Articles/Create
+        // POST: SlotTypes/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Name")] Article model)
+        public async Task<IActionResult> Create([Bind("Id,Name")] SlotType slotType)
         {
-            if (model.Name != null)
-            {
-                // Get the user which
-                var user = await UserManager.GetUserAsync(this.User);
-
-                // Add the user to the model and modelstate
-                model.User = user;
-                //since User is a required field we have to validate manually
-                var state = ModelState.Where(e => e.Key == "User").FirstOrDefault(); 
-                state.Value.ValidationState = Microsoft.AspNetCore.Mvc.ModelBinding.ModelValidationState.Valid;
-            }
             if (ModelState.IsValid)
             {
-                // add the model to the database
-                await _context.AddAsync<Article>(model);
-                // and save changes
+                _context.Add(slotType);
                 await _context.SaveChangesAsync();
-                //finally redirect to index
                 return RedirectToAction(nameof(Index));
             }
-            return View(model);
+            return View(slotType);
         }
 
-        // GET: Articles/Edit/5
+        // GET: SlotTypes/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -92,22 +73,22 @@ namespace WebDemo.Controllers
                 return NotFound();
             }
 
-            var article = await _context.Articles.FindAsync(id);
-            if (article == null)
+            var slotType = await _context.SlotTypes.FindAsync(id);
+            if (slotType == null)
             {
                 return NotFound();
             }
-            return View(article);
+            return View(slotType);
         }
 
-        // POST: Articles/Edit/5
+        // POST: SlotTypes/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Name")] Article article)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Name")] SlotType slotType)
         {
-            if (id != article.Id)
+            if (id != slotType.Id)
             {
                 return NotFound();
             }
@@ -116,12 +97,12 @@ namespace WebDemo.Controllers
             {
                 try
                 {
-                    _context.Update(article);
+                    _context.Update(slotType);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!ArticleExists(article.Id))
+                    if (!SlotTypeExists(slotType.Id))
                     {
                         return NotFound();
                     }
@@ -132,10 +113,10 @@ namespace WebDemo.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(article);
+            return View(slotType);
         }
 
-        // GET: Articles/Delete/5
+        // GET: SlotTypes/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -143,30 +124,30 @@ namespace WebDemo.Controllers
                 return NotFound();
             }
 
-            var article = await _context.Articles
+            var slotType = await _context.SlotTypes
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (article == null)
+            if (slotType == null)
             {
                 return NotFound();
             }
 
-            return View(article);
+            return View(slotType);
         }
 
-        // POST: Articles/Delete/5
+        // POST: SlotTypes/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var article = await _context.Articles.FindAsync(id);
-            _context.Articles.Remove(article);
+            var slotType = await _context.SlotTypes.FindAsync(id);
+            _context.SlotTypes.Remove(slotType);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool ArticleExists(int id)
+        private bool SlotTypeExists(int id)
         {
-            return _context.Articles.Any(e => e.Id == id);
+            return _context.SlotTypes.Any(e => e.Id == id);
         }
     }
 }

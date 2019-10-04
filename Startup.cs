@@ -12,6 +12,8 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using WebDemo.Models;
+using Microsoft.AspNetCore.Mvc.ModelBinding.Binders;
+using WebDemo.Models.Articles;
 
 namespace WebDemo
 {
@@ -27,6 +29,7 @@ namespace WebDemo
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+
             services.Configure<CookiePolicyOptions>(options =>
             {
                 // This lambda determines whether user consent for non-essential cookies is needed for a given request.
@@ -40,7 +43,13 @@ namespace WebDemo
             services.AddDefaultIdentity<AppUser>()
                 .AddEntityFrameworkStores<AppDBContext>();
 
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+
+
+            services.AddMvc(options =>
+            {
+                options.ModelBinderProviders.Insert(0, new ElementModelBinderProvider());
+            })
+                .SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
